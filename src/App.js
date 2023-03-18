@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import Store from "./routes/Store/Store";
+import "./index.css";
+import Home from "./routes/Home/Home";
+import About from "./routes/About/About";
+import CartProvider from "./UI/CartProvider";
+import Cart from "./Cart/Cart";
+import React, {  useState } from "react";
+import { Route, Routes } from "react-router-dom";
+//import CartButton from "./Cart/CartButton";
 
 function App() {
+  const [showicon, setShowicon] = useState(false);
+  // const showCarhandler = () => {
+  //   setShowicon(true);
+  // };
+  const hideCartHandler=()=>{
+    setShowicon(false)
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CartProvider>
+      {showicon&&<Cart onClose={hideCartHandler}/>}
+      <Routes>
+        <Route path="/" element={<Store />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        
+      </Routes>
+      {/* <Store value={showicon} onShowCartitem={showCarhandler}/> */}
+    </CartProvider>
   );
 }
 
