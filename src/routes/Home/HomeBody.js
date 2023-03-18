@@ -1,5 +1,6 @@
 import React from "react";
 import './HomeBody.css'
+import { Button } from "react-bootstrap";
 
 const HomeBody = () => {
   return (
@@ -14,7 +15,7 @@ const HomeBody = () => {
             <td>DTE ENERGY MUSIC THEATRE</td>
 
             <td>
-              <button variant="info">BUY TICKETS</button>
+              <Button variant="info">BUY TICKETS</Button>
             </td>
           </tr>
 
@@ -26,7 +27,7 @@ const HomeBody = () => {
             <td>BUDWEISER STAGE</td>
 
             <td>
-              <button variant="info">BUY TICKETS</button>
+              <Button variant="info">BUY TICKETS</Button>
             </td>
           </tr>
 
@@ -36,7 +37,7 @@ const HomeBody = () => {
             <td>BRISTOW,VA</td>
             <td>JIGGY LUBE LIVE</td>
             <td>
-              <button variant="info">BUY TICKETS</button>
+              <Button variant="info">BUY TICKETS</Button>
             </td>
           </tr>
 
@@ -48,7 +49,7 @@ const HomeBody = () => {
             <td>AK-CHIN PAVILION</td>
 
             <td>
-              <button variant="info">BUY TICKETS</button>
+              <Button variant="info">BUY TICKETS</Button>
             </td>
           </tr>
 
@@ -60,7 +61,7 @@ const HomeBody = () => {
             <td>T-MOBILE ARENA</td>
 
             <td>
-              <button variant="info">BUY TICKETS</button>
+              <Button variant="info">BUY TICKETS</Button>
             </td>
           </tr>
 
@@ -69,7 +70,7 @@ const HomeBody = () => {
             <td>CONCORD,CA</td>
             <td>CONCORD PAVILION</td>
             <td>
-              <button variant="info">BUY TICKETS</button>
+              <Button variant="info">BUY TICKETS</Button>
             </td>
           </tr>
         </tbody>
