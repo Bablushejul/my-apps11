@@ -3,14 +3,16 @@ import React from 'react';
 const CatItems = (props) => {
   return (
     <div>
-      <h1>{props.name}</h1>
-      <div>
+      
+      <span>{props.name}</span>
+      <span>--</span>
         <span>{props.price}</span>
+        <span>-</span>
         <span>{props.amount}</span>
-      </div>
-      <div>
+      
+        <span>-</span>
         <button onClick={props.onRemove}>Remove</button>
-      </div>
+    
     </div>
   );
 }

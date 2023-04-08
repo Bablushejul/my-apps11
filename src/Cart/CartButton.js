@@ -7,7 +7,7 @@ const CartButton = (props) => {
   const numberofCartItems=cartCtx.items.reduce((currNumber,item)=>{
     return currNumber+item.count
   },0)
-  console.log(cartCtx)
+ 
   return (
     <Button onClick={props.onClick}>
       <div>CART</div>

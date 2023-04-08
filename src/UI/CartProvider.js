@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer ,useState} from "react";
 import CartContext from "./CartContext";
 
 const defaultCartState = {
@@ -7,25 +7,29 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
- 
-  console.log(action)
+  
   if (action.type === "ADD") {
-    const updatedtotalAmount =
-      +(action.item.price) * +(action.item.count);
-    console.log(updatedtotalAmount);
+    const updatedtotalAmount = +action.item.price + state.totalAmount//+ +action.item.amount;
+
+    
+
     const existingItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
     );
+
     const existingItem = state.items[existingItemIndex];
+
     let updatedItems;
+
     if (existingItem) {
       const updatedItem = {
         ...existingItem,
-
         amount: existingItem.amount + action.item.amount,
       };
-      console.log(updatedItem.amount);
+
+      console.log(updatedItem.price);
       updatedItems = [...state.items];
+
       updatedItems[existingItemIndex] = updatedItem;
     } else {
       updatedItems = state.items.concat(action.item);
@@ -36,14 +40,24 @@ const cartReducer = (state, action) => {
     };
   }
   if (action.type === "REMOVE") {
-    const existingItemIndex = state.itemsfindIndex(
+    
+    const existingItemIndex = state.items.findIndex(
       (item) => item.id === action.id
+      
     );
+    
+   
     const existingItem = state.items[existingItemIndex];
+
     const updatedtotalAmount = state.totalAmount - existingItem.price;
+
     let updatedItems;
-    if (existingItem.amount === 1) {
+
+    
+    if (existingItem.count === 1) {
+
       updatedItems = state.items.filter((item) => item.id !== action.id);
+      
     } else {
       const updatedItem = { ...existingItem, amount: existingItem.amount - 1 };
       updatedItems = [...state.items];
@@ -59,17 +73,38 @@ const cartReducer = (state, action) => {
 const CartProvider = (props) => {
   const [cartState, dispatchAction] = useReducer(cartReducer, defaultCartState);
 
+  const initialToken = localStorage.getItem("token");
+  const [token, setToken] = useState(initialToken);
+  const userIsLoggedIn = !!token;
+
+
   const addItemHandler = (item) => {
     dispatchAction({ type: "ADD", item: item });
   };
   const removeItemHandler = (id) => {
     dispatchAction({ type: "REMOVE", id: id });
   };
+
+  const loginHandler = (token) => {
+    setToken(token);
+
+    localStorage.setItem("token", token);
+  };
+  const logoutHandler = () => {
+    setToken(null);
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+  };
+
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
+    onLogin: loginHandler,
+    onlogout: logoutHandler,
+    isLoggedIn: userIsLoggedIn,
+    token: token,
   };
 
   return (

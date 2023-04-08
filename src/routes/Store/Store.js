@@ -7,19 +7,21 @@ import CartContext from "../../UI/CartContext";
 const Store = (props) => {
   const cartCtx = useContext(CartContext);
   const addToCartHandler = (amount,count) => {
+    
     cartCtx.addItem({
       id:amount.id,
       name:amount.name
       ,price:amount.price,
       amount:amount.price,
       count:count
+      
     });
-    console.log(cartCtx.amount)
+    
     
   };
   return (
     <div>
-      <Navbar onclick={props.onShowCart}/>
+      <Navbar onClick={props.onShow}/>
     
       <Hero
         id={props.id}

@@ -1,16 +1,21 @@
 import React, { useContext } from "react";
 import CatItems from "./CatItems";
 import CartContext from "../UI/CartContext";
-import { Modal } from "react-bootstrap";
+//import { Modal } from "react-bootstrap";
+import Modal from "../UI/Modal";
 
 const Cart = (props) => {
+  
   const cartCtx = useContext(CartContext);
   const hasItems=cartCtx.items.length>0
   const cartAddItemHandler = (item) => {
     cartCtx.addItem(item);
   };
   const cartRemoveItemHandler = (id) => {
-    cartCtx.removeItems(id);
+    
+    cartCtx.removeItem(id);
+  
+    
   };
   const cartitems = <ul>{cartCtx.items.map((item) => (
     
@@ -26,7 +31,8 @@ const Cart = (props) => {
   </ul>
 
   return (
-    <Modal onClose={props.onClose}>
+    <Modal onClose={props.onClose} >
+    
       {cartitems}
       <div>
         <span>Total Amount</span>

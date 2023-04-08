@@ -156,6 +156,7 @@ const Hero = (props) => {
           </Button>
         </Card.Body>
       </Card>
+      
       </div>
     </Fragment>
   );

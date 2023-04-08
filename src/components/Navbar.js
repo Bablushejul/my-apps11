@@ -1,15 +1,22 @@
-import React,{useState} from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+//import Cart from "../Cart/Cart";
 import CartButton from "../Cart/CartButton";
+
 import "./Navbar.css";
+
+
+
 const Navbar = (props) => {
-  const [showicon, setShowicon] = useState(false);
+//   const [showicon, setShowicon] = useState(false);
   
-const showCarhandler=()=>{
- setShowicon(true)
-}
+// const showCarhandler=()=>{
+//  setShowicon(true)
+
+ 
+
   return (
-    <div className="header">
+    <div className="header" >
       <ul className="nav-menu">
         <li>
           <Link to="/home">Home</Link>
@@ -21,8 +28,8 @@ const showCarhandler=()=>{
           <Link to="/about">About</Link>
         </li>
       </ul>
-      <CartButton value={showicon} onclick={showCarhandler} />
-      
+      <CartButton  onClick={props.onClick} />
+    
     </div>
   );
 };
