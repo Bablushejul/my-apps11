@@ -11,8 +11,6 @@ const cartReducer = (state, action) => {
   if (action.type === "ADD") {
     const updatedtotalAmount = +action.item.price + state.totalAmount//+ +action.item.amount;
 
-    
-
     const existingItemIndex = state.items.findIndex(
       (item) => item.id === action.item.id
     );
@@ -93,7 +91,7 @@ const CartProvider = (props) => {
   const logoutHandler = () => {
     setToken(null);
     localStorage.removeItem("token");
-    localStorage.removeItem("email");
+   // localStorage.removeItem("email");
   };
 
   const cartContext = {

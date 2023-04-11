@@ -1,5 +1,3 @@
- 
-
 import React, { useRef, useState, useContext } from "react";
 //import classes from "./LoginPage.module.css";
 import CartContext from "../UI/CartContext";
@@ -19,8 +17,8 @@ function Login() {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
-    localStorage.setItem('email',enteredEmail)
-  
+    localStorage.setItem("email", enteredEmail);
+
     let url;
     if (isLogin) {
       url =
@@ -55,8 +53,8 @@ function Login() {
       })
       .then((data) => {
         authCtx.onLogin(data.idToken);
-        
-       // history.replace("/Store");
+
+        // history.replace("/Store");
       })
       .catch((err) => {
         alert(err.message);
@@ -64,7 +62,7 @@ function Login() {
   };
 
   return (
-    <div >
+    <div>
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
         <div>
