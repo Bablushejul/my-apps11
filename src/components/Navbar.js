@@ -20,7 +20,7 @@ const Navbar = (props) => {
 // }
 const authctx = useContext(CartContext);
 const logoHandler=()=>{
-  authctx.onLogin()
+  authctx.onlogout()
   
   
    }

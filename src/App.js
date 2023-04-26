@@ -32,10 +32,12 @@ function App() {
     <React.Fragment>
       <main>
         {" "}
-        {!authctx.isLoggedIn && <Login />}
+       
         {console.log("by")}
+        {!authctx.isLoggedIn &&<Login />}
         {showicon && <Cart onClose={hideCartHandler} />}
         <Routes>
+        
           {authctx.isLoggedIn && (
             <Route path="/" element={<Store onShow={showCarhandler} />} />
           )}

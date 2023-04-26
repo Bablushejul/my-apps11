@@ -1,10 +1,12 @@
 import React, { useRef, useState, useContext } from "react";
 //import classes from "./LoginPage.module.css";
 import CartContext from "../UI/CartContext";
+//import AuthCartContext from "./AuthCartContext";
 //import { useHistory } from "react-router-dom";
 function Login() {
   //const history = useHistory();
   const authCtx = useContext(CartContext);
+ // const ctxx=useContext(AuthCartContext)
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -19,7 +21,7 @@ function Login() {
     const enteredPassword = passwordInputRef.current.value;
     localStorage.setItem("email", enteredEmail);
 
-    let url;
+   let url;
     if (isLogin) {
       url =
         "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBVolZfGhV4B7RviO8NQOjLMUj0J6iWezA";
@@ -36,8 +38,8 @@ function Login() {
       }),
       headers: {
         "Content-Type": "application/json",
-      },
-    })
+      },})
+    // .then((res)=>{console.log(res+"every")})
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -52,9 +54,11 @@ function Login() {
         }
       })
       .then((data) => {
+        // console.log(data.idToken+"heeeloo")
+        console.log(data+"good")
+        console.log(authCtx.onLogin)
         authCtx.onLogin(data.idToken);
-
-        // history.replace("/Store");
+        //history.push("../components//Hero/Hero.js");
       })
       .catch((err) => {
         alert(err.message);
@@ -63,6 +67,7 @@ function Login() {
 
   return (
     <div>
+      
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
         <div>

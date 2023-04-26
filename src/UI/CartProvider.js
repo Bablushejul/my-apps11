@@ -82,18 +82,20 @@ const CartProvider = (props) => {
   const removeItemHandler = (id) => {
     dispatchAction({ type: "REMOVE", id: id });
   };
-
+ 
   const loginHandler = (token) => {
+    console.log(token)
     setToken(token);
 
     localStorage.setItem("token", token);
   };
   const logoutHandler = () => {
+    console.log(token)
     setToken(null);
     localStorage.removeItem("token");
    // localStorage.removeItem("email");
   };
-
+  console.log(token)
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
@@ -104,7 +106,9 @@ const CartProvider = (props) => {
     isLoggedIn: userIsLoggedIn,
     token: token,
   };
-
+  console.log(token)
+  console.log(cartContext)
+console.log(token)
   return (
     <CartContext.Provider value={cartContext}>
       {" "}
