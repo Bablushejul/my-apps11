@@ -27,11 +27,11 @@ console.log(authctx.token)
         idToken:authctx.token,
         password:newPassword,
        
-        returnSecureToken:true
+        returnSecureToken:true,
       }),
       headers:{
-        'Context-Type':'application/json',
-        //'Authorization':'Bearer abc'
+        'Content-Type':'application/json',
+       
       },
     }).then((res)=>{
 

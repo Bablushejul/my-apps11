@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import CartProvider from './UI/CartProvider';
-import AuthContProvider from './Login/AuthContProvider';
-//import AuthContext from './Login/AuthContext';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
